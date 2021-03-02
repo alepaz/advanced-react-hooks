@@ -1,17 +1,17 @@
 // useReducer: simple Counter
 // http://localhost:3000/isolated/exercise/01.js
 
-import React, { useState, useReducer } from 'react'
+import React, { useReducer } from 'react'
 
 function Counter({initialCount = 0, step = 1}) {
 
-  function countReducer(prevState, newState) {
-    return newState
+  function countReducer(prevState, step) {
+    return prevState + step
   }
 
-  const [count, setCount] = useReducer(countReducer, initialCount)
+  const [count, changeCount] = useReducer(countReducer, initialCount)
 
-  const increment = () => setCount(count + step)
+  const increment = () => changeCount(step)
   return <button onClick={increment}>{count}</button>
 }
 
