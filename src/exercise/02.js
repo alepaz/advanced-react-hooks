@@ -28,7 +28,7 @@ function pokemonInfoReducer(state, action) {
   }
 }
 
-function useAsync({pokemonName}, dependencyArray){
+function useAsync({pokemonName}){
 
     const [state, dispatch] = React.useReducer(pokemonInfoReducer, {
       status: pokemonName ? 'pending' : 'idle',
@@ -61,11 +61,9 @@ function useAsync({pokemonName}, dependencyArray){
     }
 
 function PokemonInfo({pokemonName}) {
-  // 🐨 move both the useReducer and useEffect hooks to a custom hook called useAsync
-  // here's how you use it:
+ 
   const state = useAsync({pokemonName});
 
-  // 🐨 this will change from "pokemon" to "data"
   const {data, status, error} = state
 
   if (status === 'idle' || !pokemonName) {
